@@ -2,6 +2,7 @@ package com.v1sar.uitestdaggersample.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, SecondFeature.class));
         });
         findViewById(R.id.toThirdFeature).setOnClickListener(view -> {
-            startActivity(new Intent(this, ThirdFeature.class));
+                new Handler().postDelayed(() -> startActivity(new Intent(MainActivity.this, ThirdFeature.class)), 10000);
         });
     }
 
