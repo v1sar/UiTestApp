@@ -1,5 +1,6 @@
 package com.v1sar.uitestdaggersample.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -20,18 +21,23 @@ public class FirstFeature extends AppCompatActivity {
     @Inject
     DummyNumber mDummyNumber;
 
+    TextView mDummyNumberTextView;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         getApp().getMainComponent().inject(this);
         super.onCreate(savedInstanceState);
         Log.w(TAG, "FirstFeature onCreate()");
         setContentView(R.layout.first_feature);
+
+        mDummyNumberTextView = findViewById(R.id.dummyNumber);
+        mDummyNumberTextView.setText(mDummyNumber.getSomeNumber().toString());
+
+        findViewById(R.id.dummyNumberIncreaser).setOnClickListener(view -> {
+            mDummyNumber.setSomeNumber(mDummyNumber.getSomeNumber() + 1);
+            mDummyNumberTextView.setText(mDummyNumber.getSomeNumber().toString());
+        });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        TextView dummyPlaceholder = findViewById(R.id.dummyNumberPlaceholder);
-        dummyPlaceholder.setText(mDummyNumber.getSomeNumber().toString());
-    }
 }

@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/featureDisclaimer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="24sp"
         android:text="FIRST feature"
-        app:layout_constraintBottom_toTopOf="@+id/dummyNumberPlaceholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"/>
 
-    <TextView
-        android:id="@id/dummyNumberPlaceholder"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Placeholder for dummy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/dummyNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dummy number:"
+            android:layout_marginRight="16dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/dummyNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/dummyNumberIncreaser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Increase number"
+        android:gravity="center"/>
+
+</LinearLayout>

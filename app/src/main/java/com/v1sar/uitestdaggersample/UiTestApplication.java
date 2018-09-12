@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.v1sar.uitestdaggersample.di.DaggerMainComponent;
 import com.v1sar.uitestdaggersample.di.MainComponent;
+import com.v1sar.uitestdaggersample.di.MainModule;
 
 public class UiTestApplication extends Application {
 
@@ -17,7 +18,9 @@ public class UiTestApplication extends Application {
         super.onCreate();
         app = this;
         Log.w(TAG, "UiTestApplication onCreate()");
-        mMainComponent = DaggerMainComponent.create();
+        mMainComponent = DaggerMainComponent.builder()
+                .mainModule(new MainModule(this))
+                .build();
     }
 
     public static UiTestApplication getApp() {
