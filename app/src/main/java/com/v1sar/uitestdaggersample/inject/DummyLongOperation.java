@@ -10,7 +10,7 @@ public class DummyLongOperation {
     private boolean isInitialized;
 
     public Completable doLongOperation() {
-        return Completable.timer(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+        return Completable.timer(5, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
                 .andThen(Completable.fromAction(() -> isInitialized = true));
     }
 

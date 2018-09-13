@@ -30,4 +30,8 @@ public class UiTestApplication extends Application {
     public MainComponent getMainComponent() {
         return mMainComponent;
     }
+
+    public void setMainComponent(MainComponent mainComponent) {
+        mMainComponent = mainComponent;
+    }
 }
