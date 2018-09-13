@@ -9,7 +9,7 @@ import com.v1sar.uitestdaggersample.inject.DummyFrw
 import com.v1sar.uitestdaggersample.integration.di.DaggerFakeComponent
 import com.v1sar.uitestdaggersample.integration.di.FakeComponent
 import com.v1sar.uitestdaggersample.integration.di.FakeMainModule
-import com.v1sar.uitestdaggersample.integration.stub_classes.FakeDummyFrw
+import com.v1sar.uitestdaggersample.pageobjects.FirstFeatureScreen
 import com.v1sar.uitestdaggersample.pageobjects.MainActivityScreen
 import com.v1sar.uitestdaggersample.pageobjects.ThirdFeatureFrwScreen
 import com.v1sar.uitestdaggersample.pageobjects.ThirdFeatureScreen
@@ -34,8 +34,9 @@ class TestFeaturesWithMocks {
     val ruleThirdFeature = ActivityTestRule(ThirdFeature::class.java, false, false)
 
     val mMainActivityScreen = MainActivityScreen()
-    val mThirdFeatureFrwScreen = ThirdFeatureFrwScreen()
+    val mFirstFeatureScreen = FirstFeatureScreen()
     val mThirdFeatureScreen = ThirdFeatureScreen()
+    val mThirdFeatureFrwScreen = ThirdFeatureFrwScreen()
 
     lateinit var mComponent: FakeComponent
 
@@ -63,7 +64,7 @@ class TestFeaturesWithMocks {
                 click()
             }
         }
-        mThirdFeatureScreen{
+        mThirdFeatureScreen {
             featureDisclaimer {
                 isVisible()
             }
@@ -81,7 +82,7 @@ class TestFeaturesWithMocks {
                 click()
             }
         }
-        mThirdFeatureScreen{
+        mThirdFeatureScreen {
             featureDisclaimer {
                 isVisible()
             }
@@ -94,10 +95,30 @@ class TestFeaturesWithMocks {
 
         ruleThirdFeature.launchActivity(null)
 
-        mThirdFeatureScreen{
+        mThirdFeatureScreen {
             featureDisclaimer {
                 isVisible()
                 idle()
+            }
+        }
+    }
+
+    @Test
+    fun testFirstFeatureWithMocks() {
+        rule.launchActivity(null)
+
+        mMainActivityScreen {
+            toFirstFeatureButton {
+                click()
+            }
+        }
+        mFirstFeatureScreen {
+            dummyNumberButton {
+                click()
+                click()
+                click()
+                click()
+                click()
             }
         }
     }
